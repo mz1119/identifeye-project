@@ -52,11 +52,10 @@ class PatientPortal:
         patID = self.examToPatientDict[examID]
         self.patientDict[patID].exams.remove(examID)
 
+    def output_record(self):
+        for patient in self.patientDict.values():
+            print(patient)
 
-
-#use dataclasses
-#hashmap of patient IDs to patient classes
-#patient class includes a set exam IDs
 #exam ids to patient id hashmap
 #wrap everything in a bigger class that simplify calls
 #unit tests!!! with pytest
