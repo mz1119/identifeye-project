@@ -4,13 +4,24 @@ import glob
 def main():
     portal = PatientPortal()
 
-    #finds first filename endig with .txt
+    #finds first file ending with .txt
     filename = glob.glob('./*.txt')[0]
     file = open(filename, 'r')
 
     for line in file.readlines():
-        lineList = line.strip().split(" ")
-        print(lineList)
+        line = line.strip().split(" ")
+
+        if line[0] == 'ADD' and line[1] == 'PATIENT':
+            portal.add_patient(int(line[2]), " ".join(line[3:]))
+        elif line[0] == 'ADD' and line[1] == 'EXAM':
+            portal.add_exam(int(line[2]), int(line[3]))
+        elif line[0] == 'DEL' and line[1] == 'PATIENT':
+            portal.delete_patient(int(line[2]))
+        elif line[0] == 'DEL' and line[1] == 'EXAM':
+            portal.delete_exam(int(line[2]))
+
+    portal.output_record()
+
 
 
 if __name__ == "__main__":
