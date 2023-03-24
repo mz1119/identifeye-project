@@ -39,13 +39,24 @@ class PatientPortal:
         #add exam to patient class with given patID
         self.patientDict[patID].exams.add(examID)
 
+    def delete_patient(self, patID: int):
+        # if patient doesn't exist, move on
+        if patID not in self.patientDict: return
+        #otherwise, delete patient
+        del self.patientDict[patID]
 
+    def delete_exam(self, examID: int):
+        #if exam doesn't exist, move on
+        if examID not in self.examToPatientDict: return
+        #otherwise delete exam from set in patient class
+        patID = self.examToPatientDict[examID]
+        self.patientDict[patID].exams.remove(examID)
 
 
 
 #use dataclasses
 #hashmap of patient IDs to patient classes
-#patient class includes a set exam classes
+#patient class includes a set exam IDs
 #exam ids to patient id hashmap
 #wrap everything in a bigger class that simplify calls
 #unit tests!!! with pytest
