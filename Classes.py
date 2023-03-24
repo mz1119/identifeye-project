@@ -56,7 +56,5 @@ class PatientPortal:
         for patient in self.patientDict.values():
             print(patient)
 
-#exam ids to patient id hashmap
-#wrap everything in a bigger class that simplify calls
 #unit tests!!! with pytest
 #format code with black
