@@ -5,8 +5,8 @@ import glob
 def main():
     portal = PatientPortal()
 
-    # finds first file ending with .txt
-    filename = glob.glob("./*.txt")[0]
+    # finds first file ending with .txt in data directory
+    filename = glob.glob("./data/*.txt")[0]
     file = open(filename, "r")
 
     for line in file.readlines():
