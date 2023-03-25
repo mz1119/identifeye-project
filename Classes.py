@@ -1,25 +1,17 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
-@dataclass
+@dataclass(eq=True)
 class Patient:
     patID: int
     name: str
-    exams: set()
-
-    def __init__(self, patID: int, name: str):
-        self.patID = patID
-        self.name = name
-        self.exams = set()
+    exams: set[int] = field(default_factory=set)
 
     def __str__(self):
         return f"Name: {self.name}, Id: {self.patID}, Exam Count: {len(self.exams)}"
 
 
 class PatientPortal:
-    patientDict: {}
-    examToPatientDict: {}
-
     def __init__(self):
         self.patientDict = {}
         self.examToPatientDict = {}
